@@ -65,17 +65,22 @@ public abstract class TodocDatabase extends RoomDatabase {
                 projectDao.insert(project2);
                 projectDao.insert(project3);
 
-                TaskDao taskDao = INSTANCE.taskDao();
-                taskDao.deleteAll();
-
-                Task task = new Task(1L, "Nettoyer les vitres Salle 4", new Date().getTime());
-                taskDao.insert(task);
-                Task task1 = new Task(2L, "Laver le sol Salle 47", new Date().getTime());
-                taskDao.insert(task1);
+                createTasksForTest();
 
             });
         }
     };
+
+    public static void createTasksForTest() {
+        TaskDao taskDao = INSTANCE.taskDao();
+        taskDao.deleteAll();
+        Task task = new Task(1L, "Nettoyer les vitres Salle 4", new Date().getTime() - 86400000);
+        taskDao.insert(task);
+        Task task1 = new Task(2L, "Laver le sol Salle 47", new Date().getTime() - (86400000 * 2));
+        taskDao.insert(task1);
+        Task task3 = new Task(3L, "Nettoyer le tableau Salle 12", new Date().getTime());
+        taskDao.insert(task3);
+    }
 
 
 }

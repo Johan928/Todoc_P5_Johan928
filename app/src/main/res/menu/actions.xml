@@ -26,7 +26,10 @@
                 android:id="@+id/filter_recent_first"
                 android:title="@string/sort_recent_first"
                 app:showAsAction="never|withText" />
-
+            <item
+                android:id="@+id/generate_tasks"
+                android:title="@string/generate_tasks"
+                app:showAsAction="never|withText" />
         </menu>
     </item>
 

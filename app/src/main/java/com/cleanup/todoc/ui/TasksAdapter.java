@@ -40,6 +40,7 @@ public class TasksAdapter extends ListAdapter<Task, TasksAdapter.TaskViewHolder>
         public boolean areContentsTheSame(@NonNull Task oldItem, @NonNull Task newItem) {
             return oldItem.getName().equals(newItem.getName()) && oldItem.getProjectId() == newItem.getProjectId() && oldItem.getId() == newItem.getId();
         }
+
     };
     /**
      * The listener for when a task needs to be deleted
