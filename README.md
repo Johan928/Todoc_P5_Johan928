@@ -7,7 +7,7 @@
 ### General Info
 Welcome to the Todoc project. The app allows you to create tasks to accomplish, create a new task and assign it to a project name.You can delete a Task. You can also filter your tasks by date or name by using the menu on the top right corner.
 <br>You can also update a Task !!! Long Click on a Task Title, and you can now modify your task name and/or the project it was assigned to.
-<br><br>For testing, 2 tasks are already created when you launch the app for the first time.
+<br><br>For testing, 3 tasks are already created when you launch the app for the first time. You can Regenerate those 3 tasks anytime by clicking 'Generate Tasks' in the menu.
 <br><br>The app uses Sqlite, so your data are safe and won't go anywhere (except if you uninstall the app).
 ### Screenshots
 ![Image text](/screens/1.png)
