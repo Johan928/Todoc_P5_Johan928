@@ -18,4 +18,7 @@
     <string name="empty_task_name">Le nom de la tâche doit être renseigné</string>
     <string name="delete_database">Delete database</string>
     <string name="generate_tasks">Generate Tasks !!!</string>
+    <string name="apply_changes">Apply Changes   </string>
+    <string name="cancel">Cancel</string>
+
 </resources>

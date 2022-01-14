@@ -2,12 +2,14 @@ package com.cleanup.todoc.ui;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
@@ -88,6 +90,10 @@ public class TasksAdapter extends ListAdapter<Task, TasksAdapter.TaskViewHolder>
      * @author Gaëtan HERFRAY
      */
     class TaskViewHolder extends RecyclerView.ViewHolder {
+        public static final String TASK_NAME = "com.cleanup.todoc.TASK_NAME";
+        public static final String PROJECT_NAME = "com.cleanup.todoc.PROJECT_NAME";
+        public static final String TASK_ID = "com.cleanup.todoc.TASK_ID";
+
         /**
          * The circle icon showing the color of the project
          */
@@ -120,6 +126,7 @@ public class TasksAdapter extends ListAdapter<Task, TasksAdapter.TaskViewHolder>
         TaskViewHolder(@NonNull View itemView) {
             super(itemView);
 
+
             imgProject = itemView.findViewById(R.id.img_project);
             lblTaskName = itemView.findViewById(R.id.lbl_task_name);
             lblProjectName = itemView.findViewById(R.id.lbl_project_name);
@@ -134,6 +141,19 @@ public class TasksAdapter extends ListAdapter<Task, TasksAdapter.TaskViewHolder>
                     if (deleteTaskListener != null && getAdapterPosition() != RecyclerView.NO_POSITION) {
                         deleteTaskListener.onDeleteTask(getItem(getAdapterPosition()));
                     }
+                }
+            });
+            lblTaskName.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+
+                    Intent intent = new Intent(v.getContext(), ModifyTaskActivity.class);
+                    intent.putExtra(TASK_NAME, lblTaskName.getText());
+                    intent.putExtra(PROJECT_NAME, lblProjectName.getText());
+                    intent.putExtra(TASK_ID, getItem(getAdapterPosition()).getId());
+                    v.getContext().startActivity(intent);
+
+                    return true;
                 }
             });
         }
@@ -159,6 +179,7 @@ public class TasksAdapter extends ListAdapter<Task, TasksAdapter.TaskViewHolder>
                 imgProject.setVisibility(View.INVISIBLE);
                 lblProjectName.setText("");
             }
+
 
         }
 

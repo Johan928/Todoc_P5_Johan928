@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.ModifyTaskActivity"
+            android:exported="false"
+            android:label="Modify a Task"
+            />
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"

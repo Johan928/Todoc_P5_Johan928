@@ -34,4 +34,8 @@ public class TaskRepository {
     public void delete(Task task){
         TodocDatabase.databaseWriteExecutor.execute(() -> taskDao.deleteTask(task));
     }
+
+    public void update(Task task){
+        TodocDatabase.databaseWriteExecutor.execute(() -> taskDao.updateTask(task));
+    }
 }

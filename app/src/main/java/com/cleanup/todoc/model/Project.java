@@ -65,6 +65,15 @@ public class Project {
         return null;
     }
 
+    @Nullable
+    public static Project getProjectByName(String projectName) {
+        for (Project project : projectsList) {
+            if (project.getName() == projectName)
+                return project;
+        }
+        return null;
+    }
+
     /**
      * Returns the unique identifier of the project.
      *

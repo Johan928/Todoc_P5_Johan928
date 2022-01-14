@@ -3,8 +3,11 @@
     <color name="colorPrimary">#5d91d9</color>
     <color name="colorPrimaryDark">#4c79b8</color>
     <color name="colorAccent">#bb292c</color>
-    <color name="black">#000000</color>"
+    <color name="black">#000000</color>
+    <color name="steel_blue">#4682b4</color>
 
     <color name="spinner_bottom_line">#1f000000</color>
     <color name="ripple_color">#1f000000</color>
+    <color name="bright_red">#EE4B2B</color>
+
 </resources>

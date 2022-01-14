@@ -6,6 +6,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.cleanup.todoc.model.Task;
 
@@ -22,6 +23,9 @@ public interface TaskDao {
 
     @Delete
     void deleteTask(Task task);
+
+    @Update
+    void updateTask(Task task);
 
     @Query("SELECT * FROM task_table")
     LiveData<List<Task>> getAllTasks();

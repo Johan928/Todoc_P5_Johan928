@@ -7,6 +7,7 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import java.util.Comparator;
+import java.util.List;
 
 /**
  * <p>Model for the tasks of the application.</p>
@@ -23,6 +24,8 @@ public class Task {
     @PrimaryKey(autoGenerate = true)
     private long id;
 
+
+    public static List<Task> tasksList;
 
     /**
      * The unique identifier of the project associated to the task
@@ -108,7 +111,7 @@ public class Task {
      *
      * @param name the name of the task to set
      */
-    private void setName(@NonNull String name) {
+    public void setName(@NonNull String name) {
         this.name = name;
     }
 

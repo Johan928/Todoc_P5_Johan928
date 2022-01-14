@@ -108,10 +108,11 @@ public class MainActivity extends AppCompatActivity {
         taskViewModel.getAllTasks().observe(this, tasks -> {
 
             updateTasks();
-
+            Task.tasksList = tasks;
             tasksAdapter.submitList(tasks);
 
         });
+
 
 
         tasksAdapter.setOnDeleteTaskListener(task -> taskViewModel.delete(task));

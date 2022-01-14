@@ -11,6 +11,7 @@ Welcome to the Todoc project. The app allows you to create tasks to accomplish, 
 ### Screenshots
 ![Image text](/screens/1.png)
 ![Image text](/screens/2.png)
+![Image text](/screens/3.png)
 ### Installation
 To install and run the project :
 * Download the project from main branch by clicking CODE -> Download zip.
