@@ -35,7 +35,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:id="@+id/buttons_layout"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <Button
             android:id="@+id/cancel_button"
@@ -45,7 +47,6 @@
             android:backgroundTint="@color/bright_red"
             android:drawableRight="@drawable/ic_baseline_cancel_24"
             android:text="@string/cancel"
-            android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,7 +58,6 @@
             android:backgroundTint="@color/steel_blue"
             android:drawableRight="@drawable/ic_baseline_done_24"
             android:text="@string/apply_changes"
-            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

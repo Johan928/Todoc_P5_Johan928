@@ -13,8 +13,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.cleanup.todoc.R;
@@ -35,27 +35,26 @@ public class ModifyTaskActivity extends AppCompatActivity {
     Spinner spinner;
     Button buttonValidate;
     Button buttonCancel;
+    ConstraintLayout buttonsLayout;
+
     List<Project> allProjects;
     Long taskID;
     Task currentTask;
     TaskViewModel taskViewModel;
+    String projectName;
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_add_task);
-        editText = findViewById(R.id.txt_task_name);
-        spinner = findViewById(R.id.project_spinner);
-        buttonValidate = findViewById(R.id.modify_task_button);
-        buttonCancel = findViewById(R.id.cancel_button);
-
+        initUI();
         allProjects = Project.projectsList;
         taskViewModel = new ViewModelProvider(this).get(TaskViewModel.class);
 
         if (getIntent() != null) {
 
-            buttonValidate.setVisibility(View.VISIBLE);
+            buttonsLayout.setVisibility(View.VISIBLE);
             Intent intent = getIntent();
             if (intent.hasExtra(TASK_NAME)) {
                 editText.setText(intent.getStringExtra(TASK_NAME));
@@ -64,7 +63,7 @@ public class ModifyTaskActivity extends AppCompatActivity {
             final ArrayAdapter<Project> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, allProjects);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(adapter);
-            String projectName = "";
+
             if (intent.hasExtra(PROJECT_NAME)) {
                 projectName = intent.getStringExtra(PROJECT_NAME);
                 setSpinnerPosition(projectName, adapter);
@@ -81,20 +80,20 @@ public class ModifyTaskActivity extends AppCompatActivity {
                     }
                 }
             }
-            buttonValidate.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (currentTask != null) {
-                        Project project = Project.getProjectByName(spinner.getSelectedItem().toString());
-                        currentTask.setName(editText.getText().toString());
+            buttonValidate.setOnClickListener(v -> {
+                if (currentTask != null) {
+                    Project project = Project.getProjectByName(spinner.getSelectedItem().toString());
+                    currentTask.setName(editText.getText().toString());
+                    if (project != null) {
                         currentTask.setProjectId(project.getId());
-                        taskViewModel.update(currentTask);
-                        Toast.makeText(v.getContext(), "Task Updated.", Toast.LENGTH_SHORT).show();
-                    } else
-                        Toast.makeText(v.getContext(), "Error updating the Task!!!", Toast.LENGTH_SHORT).show();
+                    }
 
-                    finish();
-                }
+                    taskViewModel.update(currentTask);
+                    Toast.makeText(v.getContext(), "Task Updated.", Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(v.getContext(), "Error updating the Task!!!", Toast.LENGTH_SHORT).show();
+
+                finish();
             });
             buttonCancel.setOnClickListener(v -> {
                 Toast.makeText(v.getContext(), "Operation canceled by user.", Toast.LENGTH_SHORT).show();
@@ -109,7 +108,7 @@ public class ModifyTaskActivity extends AppCompatActivity {
         Project project = null;
         if (allProjects != null) {
             for (Project project1 : allProjects) {
-                if (project1.getName().equals(projectName.toString())) {
+                if (project1.getName().equals(projectName)) {
                     project = project1;
                     break;
                 }
@@ -122,5 +121,11 @@ public class ModifyTaskActivity extends AppCompatActivity {
         }
     }
 
-
+    private void initUI() {
+        editText = findViewById(R.id.txt_task_name);
+        spinner = findViewById(R.id.project_spinner);
+        buttonValidate = findViewById(R.id.modify_task_button);
+        buttonCancel = findViewById(R.id.cancel_button);
+        buttonsLayout = findViewById(R.id.buttons_layout);
+    }
 }

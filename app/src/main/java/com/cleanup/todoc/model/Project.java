@@ -68,7 +68,7 @@ public class Project {
     @Nullable
     public static Project getProjectByName(String projectName) {
         for (Project project : projectsList) {
-            if (project.getName() == projectName)
+            if (project.getName().equals(projectName))
                 return project;
         }
         return null;
