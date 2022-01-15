@@ -9,8 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.DiffUtil;
@@ -143,18 +141,15 @@ public class TasksAdapter extends ListAdapter<Task, TasksAdapter.TaskViewHolder>
                     }
                 }
             });
-            lblTaskName.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
+            lblTaskName.setOnLongClickListener(v -> {
 
-                    Intent intent = new Intent(v.getContext(), ModifyTaskActivity.class);
-                    intent.putExtra(TASK_NAME, lblTaskName.getText());
-                    intent.putExtra(PROJECT_NAME, lblProjectName.getText());
-                    intent.putExtra(TASK_ID, getItem(getAdapterPosition()).getId());
-                    v.getContext().startActivity(intent);
+                Intent intent = new Intent(v.getContext(), ModifyTaskActivity.class);
+                intent.putExtra(TASK_NAME, lblTaskName.getText());
+                intent.putExtra(PROJECT_NAME, lblProjectName.getText());
+                intent.putExtra(TASK_ID, getItem(getAdapterPosition()).getId());
+                v.getContext().startActivity(intent);
 
-                    return true;
-                }
+                return true;
             });
         }
 

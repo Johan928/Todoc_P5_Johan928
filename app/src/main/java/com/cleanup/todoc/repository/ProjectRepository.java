@@ -1,10 +1,6 @@
 package com.cleanup.todoc.repository;
 
-import static android.content.ContentValues.TAG;
-
 import android.app.Application;
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 
 import com.cleanup.todoc.database.ProjectDao;
