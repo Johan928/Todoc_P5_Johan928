@@ -21,7 +21,6 @@ public class ProjectRepository {
         TodocDatabase db = TodocDatabase.getINSTANCE(application);
         projectDao = db.projectDao();
         allProjects = projectDao.getAllProjects1();
-        Log.d(TAG, "ProjectRepository: OK");
     }
 
     public LiveData<List<Project>> getAllProjects1(){return allProjects;}

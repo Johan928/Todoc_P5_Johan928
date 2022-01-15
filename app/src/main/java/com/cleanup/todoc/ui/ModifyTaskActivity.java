@@ -22,6 +22,7 @@ import com.cleanup.todoc.model.Project;
 import com.cleanup.todoc.model.Task;
 import com.cleanup.todoc.viewmodels.TaskViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -37,7 +38,7 @@ public class ModifyTaskActivity extends AppCompatActivity {
     Button buttonCancel;
     ConstraintLayout buttonsLayout;
 
-    List<Project> allProjects;
+    List<Project> allProjects = new ArrayList<>();
     Long taskID;
     Task currentTask;
     TaskViewModel taskViewModel;
@@ -48,8 +49,10 @@ public class ModifyTaskActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_add_task);
-        initUI();
+
         allProjects = Project.projectsList;
+
+        initUI();
         taskViewModel = new ViewModelProvider(this).get(TaskViewModel.class);
 
         if (getIntent() != null) {
