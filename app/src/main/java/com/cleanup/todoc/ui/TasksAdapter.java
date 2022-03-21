@@ -50,9 +50,7 @@ public class TasksAdapter extends ListAdapter<Task, TasksAdapter.TaskViewHolder>
 
     /**
      * Instantiates a new TasksAdapter.
-     * <p>
-     * // * @param tasks the list of tasks the adapter deals with to set
-     */
+    */
     public TasksAdapter() {
         super(DIFF_CALLBACK);
     }
@@ -151,6 +149,7 @@ public class TasksAdapter extends ListAdapter<Task, TasksAdapter.TaskViewHolder>
 
                 return true;
             });
+
         }
 
 

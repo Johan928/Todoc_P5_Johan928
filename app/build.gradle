@@ -20,7 +20,7 @@ android {
             testCoverageEnabled true
         }
     }
-    lintOptions {
+    lint {
         disable 'RestrictedApi'
     }
 }

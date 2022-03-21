@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
      */
 
 
+
     private TextView lblNoTasks;
 
     @Override

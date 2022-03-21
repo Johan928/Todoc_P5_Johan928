@@ -51,7 +51,6 @@ public class ModifyTaskActivity extends AppCompatActivity {
         setContentView(R.layout.dialog_add_task);
 
         allProjects = Project.projectsList;
-
         initUI();
         taskViewModel = new ViewModelProvider(this).get(TaskViewModel.class);
 
